@@ -1,0 +1,39 @@
+server:
+  port: 8086
+  servlet:
+    context-path:
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/yzy?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+  session:
+    store-type: redis
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/logs
+  jackson:
+    serialization:
+      indent_output: true
+mybatis:
+  type-aliases-package: com.newer.automobile.domain
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.newer.hospital.mapper: debug
+    org.springframework.security: info
+jwt:
+  secret: mySecret
+  expiration: 604800
+  header: Authorization
+  tokenHead: bearer
+  path: /auth
+  refresh: /refresh
